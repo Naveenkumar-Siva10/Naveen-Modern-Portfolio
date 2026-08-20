@@ -51,7 +51,7 @@ export default function Hero() {
       id="hero"
       className="relative w-full h-screen min-h-[100svh] flex items-center justify-center overflow-hidden bg-dark-900"
     >
-      {/* 1. True Fullscreen Background Video Layer */}
+      {/* 1. True Fullscreen Background Video Layer with Repositioned Right Crop */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {!videoError ? (
           <video
@@ -62,7 +62,7 @@ export default function Hero() {
             muted
             preload="auto"
             onError={() => setVideoError(true)}
-            className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
+            className="absolute inset-0 w-full h-full object-cover object-[80%_center] sm:object-[75%_center] lg:object-[82%_center] transition-opacity duration-1000"
           >
             <source src="/videos/hero-reel.mp4" type="video/mp4" />
           </video>
@@ -73,8 +73,8 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#121212] to-[#080808] bg-grid-pattern-dark opacity-90" />
         )}
 
-        {/* 2. Soft Semi-Transparent Overlay for Maximum Video Visibility */}
-        <div className="absolute inset-0 bg-black/35 z-[1]" />
+        {/* 2. Soft Directional Overlay: Darker on Left for H1, Clearer on Right for Face */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20 z-[1]" />
 
         {/* 3. Subtle Red Ambient Lighting Accent */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-red/15 rounded-full blur-[160px] pointer-events-none z-[1]" />
