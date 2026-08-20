@@ -2,49 +2,30 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import { Play, Pause, ArrowDown } from "lucide-react";
+import { Volume2, VolumeX, ArrowDown } from "lucide-react";
 import { PERSONAL_INFO } from "@/lib/data";
 
 const TECH_BADGES = ["FULL-STACK", "NEXT.JS", "SEO", "DIGITAL MARKETING"];
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
-    // Check reduced motion preference
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      if (videoRef.current) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    } else if (videoRef.current) {
-      videoRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => {
-          // Autoplay fallback handling if browser blocks unmuted playback
-          setIsPlaying(false);
-        });
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {
+        // Continuous playback fallback handling
+      });
     }
   }, []);
 
-  const togglePlayPause = () => {
-    if (!videoRef.current || videoError) return;
-
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => {
-          setVideoError(true);
-          setIsPlaying(false);
-        });
-    }
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    const nextMutedState = !isMuted;
+    videoRef.current.muted = nextMutedState;
+    setIsMuted(nextMutedState);
   };
 
   const scrollToProjects = (e: React.MouseEvent) => {
@@ -81,8 +62,6 @@ export default function Hero() {
             muted
             preload="auto"
             onError={() => setVideoError(true)}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
             className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
           >
             <source src="/videos/hero-reel.mp4" type="video/mp4" />
@@ -94,11 +73,11 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#121212] to-[#080808] bg-grid-pattern-dark opacity-90" />
         )}
 
-        {/* 2. Dark Semi-Transparent Overlay */}
-        <div className="absolute inset-0 bg-black/60 backdrop-brightness-90 z-[1]" />
+        {/* 2. Soft Semi-Transparent Overlay for Maximum Video Visibility */}
+        <div className="absolute inset-0 bg-black/35 z-[1]" />
 
-        {/* 3. Red Ambient Lighting Accent */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-red/20 rounded-full blur-[160px] pointer-events-none z-[1]" />
+        {/* 3. Subtle Red Ambient Lighting Accent */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-red/15 rounded-full blur-[160px] pointer-events-none z-[1]" />
       </div>
 
       {/* Hero Content Container */}
@@ -115,10 +94,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md w-fit"
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/40 border border-white/25 backdrop-blur-md w-fit shadow-md"
             >
               <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse" />
-              <span className="text-xs md:text-sm font-bold tracking-widest text-white uppercase">
+              <span className="text-xs md:text-sm font-bold tracking-widest text-white uppercase drop-shadow">
                 HI, I&apos;M {PERSONAL_INFO.name.toUpperCase()} — FULL-STACK DEVELOPER
               </span>
             </motion.div>
@@ -129,7 +108,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.02]"
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.02] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]"
               >
                 I BUILD DIGITAL
                 <br />
@@ -143,12 +122,12 @@ export default function Hero() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="mt-3 flex items-center gap-3 text-sm md:text-lg font-mono font-bold tracking-[0.25em] text-accent-red"
+                className="mt-3 flex items-center gap-3 text-sm md:text-lg font-mono font-bold tracking-[0.25em] text-accent-red drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
               >
                 <span>BUILD</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
                 <span>RANK</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
                 <span>GROW</span>
               </motion.div>
             </div>
@@ -158,7 +137,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="max-w-2xl text-base md:text-lg text-gray-200 leading-relaxed font-normal"
+              className="max-w-2xl text-base md:text-lg text-white font-medium leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
             >
               {PERSONAL_INFO.subTitle}
             </motion.p>
@@ -174,16 +153,16 @@ export default function Hero() {
               <a
                 href="#projects"
                 onClick={scrollToProjects}
-                className="px-8 py-4 rounded-full bg-accent-red hover:bg-accent-red-dark text-white font-bold text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(229,9,20,0.5)] hover:shadow-[0_0_40px_rgba(229,9,20,0.8)] hover:scale-[1.02]"
+                className="px-8 py-4 rounded-full bg-accent-red hover:bg-accent-red-dark text-white font-bold text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(229,9,20,0.6)] hover:shadow-[0_0_40px_rgba(229,9,20,0.9)] hover:scale-[1.02]"
               >
                 VIEW MY WORK
               </a>
 
-              {/* Secondary CTA (White / Light with Red Hover) */}
+              {/* Secondary CTA (White with Red Hover) */}
               <a
                 href="#contact"
                 onClick={scrollToContact}
-                className="px-8 py-4 rounded-full bg-white hover:bg-white text-dark-900 hover:text-accent-red font-bold text-xs md:text-sm uppercase tracking-wider border border-white hover:border-accent-red transition-all duration-300 backdrop-blur-md hover:scale-[1.02]"
+                className="px-8 py-4 rounded-full bg-white hover:bg-white text-dark-900 hover:text-accent-red font-bold text-xs md:text-sm uppercase tracking-wider border border-white hover:border-accent-red transition-all duration-300 backdrop-blur-md hover:scale-[1.02] shadow-md"
               >
                 LET&apos;S WORK TOGETHER
               </a>
@@ -199,7 +178,7 @@ export default function Hero() {
               {TECH_BADGES.map((badge) => (
                 <span
                   key={badge}
-                  className="px-3 py-1 rounded-md bg-white/10 border border-white/20 text-[10px] md:text-xs font-mono font-bold text-white tracking-wider"
+                  className="px-3 py-1 rounded-md bg-black/40 border border-white/30 text-[10px] md:text-xs font-mono font-bold text-white tracking-wider backdrop-blur-sm"
                 >
                   {badge}
                 </span>
@@ -207,25 +186,25 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column: Circular Interactive Play Reel Control (Red Accent) */}
+          {/* Right Column: Circular Interactive Mute/Unmute Control ONLY (No Pause) */}
           <div className="lg:col-span-4 flex justify-start lg:justify-end items-center mt-6 lg:mt-0">
             <motion.button
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", damping: 20, stiffness: 200, delay: 0.8 }}
-              onClick={togglePlayPause}
-              aria-label={isPlaying ? "Pause showreel video" : "Play showreel video"}
-              className="group relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-black/60 border border-white/30 backdrop-blur-xl flex flex-col items-center justify-center gap-2 text-white hover:border-accent-red transition-all duration-500 hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:scale-105 select-none cursor-pointer"
+              onClick={toggleMute}
+              aria-label={isMuted ? "Unmute showreel audio" : "Mute showreel audio"}
+              className="group relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-black/50 border border-white/30 backdrop-blur-xl flex flex-col items-center justify-center gap-2 text-white hover:border-accent-red transition-all duration-300 hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:scale-105 select-none cursor-pointer"
             >
               {/* Outer Pulse Ring */}
               <div className="absolute inset-0 rounded-full border border-accent-red/30 group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
 
               <div className="p-3 rounded-full bg-accent-red/20 text-accent-red group-hover:scale-110 group-hover:bg-accent-red group-hover:text-white transition-all duration-300">
-                {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-0.5" />}
+                {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
               </div>
 
               <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-gray-200 group-hover:text-white">
-                {isPlaying ? "PAUSE" : "PLAY REEL"}
+                {isMuted ? "UNMUTE" : "MUTE"}
               </span>
             </motion.button>
           </div>
@@ -242,14 +221,14 @@ export default function Hero() {
             <a
               href="#about"
               onClick={scrollToAbout}
-              className="group flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+              className="group flex items-center gap-2 text-gray-200 hover:text-white transition-colors drop-shadow"
             >
               <span className="uppercase tracking-widest font-semibold">SCROLL TO EXPLORE ABOUT</span>
               <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-1 text-accent-red transition-transform" />
             </a>
           </div>
 
-          <div className="hidden sm:flex items-center gap-4 text-[11px] uppercase tracking-widest text-gray-400 font-bold">
+          <div className="hidden sm:flex items-center gap-4 text-[11px] uppercase tracking-widest text-gray-300 font-bold drop-shadow">
             <span>FULL-STACK STUDIO</span>
             <span>•</span>
             <span>2026</span>
