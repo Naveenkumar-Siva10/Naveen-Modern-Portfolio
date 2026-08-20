@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "motion/react";
+import React, { useRef, useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { Sparkles, Layers, Search, Wrench, ArrowUpRight } from "lucide-react";
 
 interface SkillCardData {
@@ -93,23 +93,60 @@ const CARDS_DATA: SkillCardData[] = [
 ];
 
 export default function Skills() {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
   const [activeCard, setActiveCard] = useState<number>(0);
+
+  // Track scroll progress exclusively through the Skills section
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 0.7", "end 0.3"],
+  });
+
+  // Calculate active card strictly from scroll progress (0-25%, 25-50%, 50-75%, 75-100%)
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest < 0.25) {
+      setActiveCard(0);
+    } else if (latest < 0.5) {
+      setActiveCard(1);
+    } else if (latest < 0.75) {
+      setActiveCard(2);
+    } else {
+      setActiveCard(3);
+    }
+  });
 
   const headlineWords = "WHAT I BUILD WITH.".split(" ");
 
   return (
-    <section id="skills" className="relative py-28 md:py-40 bg-[#f7f7f7] border-t border-surface-border overflow-hidden select-none">
+    <section
+      id="skills"
+      ref={sectionRef}
+      className="relative py-28 md:py-40 bg-[#f7f7f7] border-t border-surface-border overflow-hidden select-none"
+    >
       {/* Background Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-red/5 rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
-        {/* Section Header with Staggered Editorial Reveal */}
+        {/* Section Header with Synchronized Typography */}
         <div className="flex flex-col gap-4 mb-20">
-          <div className="flex items-center gap-3">
-            <span className="w-8 h-[2px] bg-accent-red" />
-            <span className="text-xs font-mono font-bold tracking-[0.25em] text-accent-red uppercase">
-              [ SKILLS & EXPERTISE ]
-            </span>
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-accent-red" />
+              <span className="text-xs font-mono font-bold tracking-[0.25em] text-accent-red uppercase">
+                [ SKILLS & EXPERTISE ]
+              </span>
+            </div>
+
+            {/* Synchronized Active Category Eyebrow Tag */}
+            <motion.div
+              key={activeCard}
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="px-3.5 py-1 rounded-full bg-accent-red/10 border border-accent-red/30 text-accent-red text-xs font-mono font-bold"
+            >
+              FOCUS: {CARDS_DATA[activeCard].number} — {CARDS_DATA[activeCard].category}
+            </motion.div>
           </div>
 
           <div className="max-w-4xl">
@@ -136,7 +173,7 @@ export default function Skills() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-base sm:text-lg text-gray-600 font-medium max-w-2xl mt-1"
           >
-            Turning ideas into performant, full-stack digital experiences.
+            Turning ideas into performant, full-stack digital experiences. (Scroll to explore stack)
           </motion.p>
         </div>
 
@@ -185,12 +222,10 @@ export default function Skills() {
                     damping: 12,
                     delay: card.id * 0.15,
                   }}
-                  onMouseEnter={() => setActiveCard(card.id)}
-                  onClick={() => setActiveCard(card.id)}
-                  className={`group relative rounded-3xl p-8 transition-all duration-500 cursor-pointer ${card.rotation} ${card.offset} ${
+                  className={`group relative rounded-3xl p-8 transition-all duration-500 hover:scale-[1.01] ${card.rotation} ${card.offset} ${
                     isActive
-                      ? "bg-accent-red text-white shadow-[0_20px_50px_rgba(229,9,20,0.35)] scale-[1.02] z-20 border-2 border-accent-red"
-                      : "bg-white text-dark-900 border border-gray-200 shadow-xl hover:border-accent-red/50 hover:shadow-2xl z-10"
+                      ? "bg-accent-red text-white shadow-[0_20px_50px_rgba(229,9,20,0.35)] scale-[1.03] z-20 border-2 border-accent-red"
+                      : "bg-white text-dark-900 border border-gray-200 shadow-xl z-10"
                   }`}
                 >
                   {/* Top Card Header */}
@@ -200,7 +235,7 @@ export default function Skills() {
                         className={`p-3 rounded-2xl transition-colors ${
                           isActive
                             ? "bg-white/20 text-white"
-                            : "bg-accent-red/10 text-accent-red group-hover:bg-accent-red group-hover:text-white"
+                            : "bg-accent-red/10 text-accent-red"
                         }`}
                       >
                         <IconComp className="w-6 h-6" />
@@ -220,7 +255,7 @@ export default function Skills() {
                       className={`w-6 h-6 transition-all duration-300 ${
                         isActive
                           ? "text-white translate-x-1 -translate-y-1"
-                          : "text-gray-400 group-hover:text-accent-red group-hover:translate-x-1 group-hover:-translate-y-1"
+                          : "text-gray-400"
                       }`}
                     />
                   </div>
@@ -251,7 +286,7 @@ export default function Skills() {
                         className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors ${
                           isActive
                             ? "bg-white/20 border border-white/30 text-white font-bold"
-                            : "bg-surface border border-gray-200 text-gray-800 font-semibold group-hover:border-gray-300"
+                            : "bg-surface border border-gray-200 text-gray-800 font-semibold"
                         }`}
                       >
                         {skill}
