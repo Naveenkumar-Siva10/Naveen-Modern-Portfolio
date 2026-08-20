@@ -9,7 +9,7 @@ const TECH_BADGES = ["FULL-STACK", "NEXT.JS", "SEO", "DIGITAL MARKETING"];
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [videoError, setVideoError] = useState(false);
 
   useEffect(() => {
@@ -17,7 +17,16 @@ export default function Hero() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       if (videoRef.current) {
         videoRef.current.pause();
+        setIsPlaying(false);
       }
+    } else if (videoRef.current) {
+      videoRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          // Autoplay fallback handling if browser blocks unmuted playback
+          setIsPlaying(false);
+        });
     }
   }, []);
 
@@ -66,24 +75,27 @@ export default function Hero() {
         {!videoError ? (
           <video
             ref={videoRef}
+            autoPlay
             playsInline
             loop
             muted
-            preload="metadata"
+            preload="auto"
             onError={() => setVideoError(true)}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
             className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000"
           >
             <source src="/videos/hero-reel.mp4" type="video/mp4" />
           </video>
         ) : null}
 
-        {/* Fallback Dark Background Pattern when video is pending */}
+        {/* Fallback Dark Background Pattern when video is pending or error */}
         {videoError && (
           <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#121212] to-[#080808] bg-grid-pattern-dark opacity-90" />
         )}
 
         {/* 2. Dark Semi-Transparent Overlay */}
-        <div className="absolute inset-0 bg-black/65 backdrop-brightness-90 z-[1]" />
+        <div className="absolute inset-0 bg-black/60 backdrop-brightness-90 z-[1]" />
 
         {/* 3. Red Ambient Lighting Accent */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-red/20 rounded-full blur-[160px] pointer-events-none z-[1]" />
@@ -203,7 +215,7 @@ export default function Hero() {
               transition={{ type: "spring", damping: 20, stiffness: 200, delay: 0.8 }}
               onClick={togglePlayPause}
               aria-label={isPlaying ? "Pause showreel video" : "Play showreel video"}
-              className="group relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-black/60 border border-white/30 backdrop-blur-xl flex flex-col items-center justify-center gap-2 text-white hover:border-accent-red transition-all duration-500 hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:scale-105 select-none"
+              className="group relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-black/60 border border-white/30 backdrop-blur-xl flex flex-col items-center justify-center gap-2 text-white hover:border-accent-red transition-all duration-500 hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:scale-105 select-none cursor-pointer"
             >
               {/* Outer Pulse Ring */}
               <div className="absolute inset-0 rounded-full border border-accent-red/30 group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
