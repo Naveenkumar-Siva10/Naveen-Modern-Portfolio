@@ -88,7 +88,7 @@ export default function Hero() {
         <div className="h-12 md:h-16" />
 
         {/* Main Content Area */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto relative">
           {/* Left Column: Typography & CTAs */}
           <div className="lg:col-span-8 flex flex-col gap-6">
             {/* Intro Pill */}
@@ -188,24 +188,24 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column: Circular Interactive Mute/Unmute Control ONLY */}
-          <div className="lg:col-span-4 flex justify-start lg:justify-end items-center mt-6 lg:mt-0">
+          {/* Right Column: Circular Interactive Mute/Unmute Control (Visible & Clickable on Mobile & Desktop) */}
+          <div className="absolute top-0 right-0 sm:right-2 lg:relative lg:top-0 lg:right-0 z-30 lg:col-span-4 flex justify-end items-center">
             <motion.button
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", damping: 20, stiffness: 200, delay: 0.8 }}
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute showreel audio" : "Mute showreel audio"}
-              className="group relative w-28 h-28 md:w-40 md:h-40 rounded-full bg-black/50 border border-white/30 backdrop-blur-xl flex flex-col items-center justify-center gap-1.5 md:gap-2 text-white hover:border-accent-red transition-all duration-300 hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:scale-105 select-none cursor-pointer"
+              className="group relative w-12 h-12 sm:w-14 sm:h-14 lg:w-40 lg:h-40 rounded-full bg-black/60 border border-white/30 backdrop-blur-xl flex flex-col items-center justify-center gap-0.5 lg:gap-2 text-white hover:border-accent-red transition-all duration-300 hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:scale-105 select-none cursor-pointer shadow-xl"
             >
               {/* Outer Pulse Ring */}
               <div className="absolute inset-0 rounded-full border border-accent-red/30 group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
 
-              <div className="p-2.5 md:p-3 rounded-full bg-accent-red/20 text-accent-red group-hover:scale-110 group-hover:bg-accent-red group-hover:text-white transition-all duration-300">
-                {isMuted ? <VolumeX className="w-5 h-5 md:w-6 md:h-6" /> : <Volume2 className="w-5 h-5 md:w-6 md:h-6" />}
+              <div className="p-1.5 lg:p-3 rounded-full bg-accent-red/20 text-accent-red group-hover:scale-110 group-hover:bg-accent-red group-hover:text-white transition-all duration-300">
+                {isMuted ? <VolumeX className="w-5 h-5 lg:w-6 lg:h-6" /> : <Volume2 className="w-5 h-5 lg:w-6 lg:h-6" />}
               </div>
 
-              <span className="text-[10px] md:text-[11px] font-mono font-bold tracking-widest uppercase text-gray-200 group-hover:text-white">
+              <span className="hidden lg:block text-[11px] font-mono font-bold tracking-widest uppercase text-gray-200 group-hover:text-white">
                 {isMuted ? "UNMUTE" : "MUTE"}
               </span>
             </motion.button>
