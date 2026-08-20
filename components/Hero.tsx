@@ -86,15 +86,15 @@ export default function Hero() {
         <div className="h-8 md:h-16" />
 
         {/* Main Content Area */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center my-auto relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center my-auto relative">
           {/* Left Column: Typography & CTAs (Strictly Constrained to Left 45% on Desktop) */}
-          <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-6 max-w-[320px] sm:max-w-[480px] lg:max-w-[620px]">
+          <div className="lg:col-span-7 flex flex-col gap-3.5 sm:gap-6 max-w-[320px] sm:max-w-[480px] lg:max-w-[620px]">
             {/* Intro Pill Badge: Full Text, NO Truncation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-white/25 backdrop-blur-md w-fit max-w-[280px] sm:max-w-[420px] lg:max-w-none shadow-md"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-white/25 backdrop-blur-md w-fit max-w-[270px] sm:max-w-[310px] lg:max-w-none shadow-md"
             >
               <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse flex-shrink-0" />
               <span className="text-[10px] sm:text-xs md:text-sm font-bold tracking-widest text-white uppercase leading-snug whitespace-normal break-words drop-shadow">
@@ -108,7 +108,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-[34px] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[1.05] sm:leading-[1.02] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]"
+                className="text-[38px] sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-[0.98] sm:leading-[1.02] drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]"
               >
                 I BUILD DIGITAL
                 <br />
@@ -122,7 +122,7 @@ export default function Hero() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="mt-2.5 sm:mt-3 flex items-center gap-2.5 sm:gap-3 text-xs sm:text-sm md:text-lg font-mono font-bold tracking-[0.2em] sm:tracking-[0.25em] text-accent-red drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+                className="mt-2 sm:mt-3 flex items-center gap-2.5 sm:gap-3 text-xs sm:text-sm md:text-lg font-mono font-bold tracking-[0.2em] sm:tracking-[0.25em] text-accent-red drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
               >
                 <span>BUILD</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
@@ -137,7 +137,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="max-w-xl text-xs sm:text-base md:text-lg text-white font-medium leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+              className="max-w-[330px] lg:max-w-xl text-xs sm:text-base md:text-lg text-white font-medium leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
             >
               {PERSONAL_INFO.subTitle}
             </motion.p>
@@ -147,13 +147,13 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1 max-w-[330px] sm:max-w-none"
             >
               {/* Primary CTA (Red) */}
               <a
                 href="#projects"
                 onClick={scrollToProjects}
-                className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-accent-red text-center hover:bg-accent-red-dark text-white font-bold text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(229,9,20,0.6)] hover:shadow-[0_0_40px_rgba(229,9,20,0.9)] hover:scale-[1.02]"
+                className="px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] sm:min-h-[54px] rounded-full bg-accent-red text-center hover:bg-accent-red-dark text-white font-bold text-xs md:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_30px_rgba(229,9,20,0.6)] hover:shadow-[0_0_40px_rgba(229,9,20,0.9)] hover:scale-[1.02] flex items-center justify-center"
               >
                 VIEW MY WORK
               </a>
@@ -162,7 +162,7 @@ export default function Hero() {
               <a
                 href="#contact"
                 onClick={scrollToContact}
-                className="px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-white text-center hover:bg-white text-dark-900 hover:text-accent-red font-bold text-xs md:text-sm uppercase tracking-wider border border-white hover:border-accent-red transition-all duration-300 backdrop-blur-md hover:scale-[1.02] shadow-md"
+                className="px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] sm:min-h-[54px] rounded-full bg-white text-center hover:bg-white text-dark-900 hover:text-accent-red font-bold text-xs md:text-sm uppercase tracking-wider border border-white hover:border-accent-red transition-all duration-300 backdrop-blur-md hover:scale-[1.02] shadow-md flex items-center justify-center"
               >
                 LET&apos;S WORK TOGETHER
               </a>
@@ -173,7 +173,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.9 }}
-              className="flex flex-wrap gap-2 sm:gap-2.5 pt-2 sm:pt-4"
+              className="flex flex-wrap gap-2 sm:gap-2.5 pt-1 sm:pt-4 max-w-[330px] sm:max-w-none"
             >
               {TECH_BADGES.map((badge) => (
                 <span
