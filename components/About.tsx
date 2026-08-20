@@ -13,68 +13,92 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Visual Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-5 relative"
-          >
-            <div className="relative group mx-auto max-w-md">
-              {/* Outer Decorative Glow Frame */}
-              <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-accent-red/30 via-accent-red/10 to-accent-red/30 blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+          {/* Left Column: Cinematic Hanging Rope-Drop Portrait */}
+          <div className="lg:col-span-5 relative flex flex-col items-center justify-center pt-8 sm:pt-12">
+            {/* Top Ceiling Hook Anchor */}
+            <div className="relative z-20 flex flex-col items-center">
+              <div className="w-4 h-4 rounded-full bg-dark-900 border-2 border-accent-red shadow-md" />
+              <div className="w-1.5 h-2 bg-dark-900" />
+            </div>
 
-              {/* Portrait Frame Container */}
-              <div className="relative rounded-2xl bg-white border border-gray-200 p-4 shadow-xl overflow-hidden">
-                <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-b from-gray-900 to-black text-white flex flex-col justify-between p-6">
-                  {/* Background grid */}
-                  <div className="absolute inset-0 bg-grid-pattern-dark opacity-30" />
+            {/* Rope + Hanging Frame Motion Assembly (Drop -> Swing -> Settle) */}
+            <motion.div
+              initial={{ y: -180, rotate: 12, opacity: 0 }}
+              whileInView={{ y: 0, rotate: -2.5, opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                type: "spring",
+                stiffness: 85,
+                damping: 11,
+                mass: 1.2,
+                delay: 0.1,
+              }}
+              className="relative w-full max-w-sm flex flex-col items-center origin-top select-none"
+            >
+              {/* Vertical Rope Extension */}
+              <div className="w-0.5 h-16 sm:h-24 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 shadow-sm" />
 
-                  {/* Top Frame Metadata */}
-                  <div className="relative z-10 flex justify-between items-center text-xs font-mono text-accent-red font-bold">
-                    <span>// FULL-STACK DEV</span>
-                    <span>NAVEEN</span>
-                  </div>
+              {/* Rope Ring Connector */}
+              <div className="w-5 h-5 rounded-full border-2 border-dark-900 bg-white flex items-center justify-center -mb-2.5 z-30 shadow-md">
+                <div className="w-2 h-2 rounded-full bg-accent-red" />
+              </div>
 
-                  {/* Editorial Graphic Center */}
-                  <div className="relative z-10 my-auto flex flex-col items-center justify-center text-center gap-4">
-                    <div className="w-20 h-20 rounded-2xl bg-accent-red/20 border border-accent-red/50 flex items-center justify-center text-accent-red shadow-[0_0_30px_rgba(229,9,20,0.4)]">
-                      <Sparkles className="w-10 h-10" />
-                    </div>
-                    <div>
-                      <h4 className="text-2xl font-black tracking-tight text-white">NAVEEN</h4>
-                      <p className="text-xs font-mono text-gray-300 tracking-widest mt-1 uppercase">
-                        FULL-STACK DEVELOPER
-                      </p>
-                    </div>
-                  </div>
+              {/* Main Editorial Portrait Frame */}
+              <div className="relative group w-full">
+                {/* Decorative Red Accent Glow */}
+                <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-accent-red/40 via-accent-red/10 to-accent-red/40 blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* Bottom Frame Stats */}
-                  <div className="relative z-10 grid grid-cols-3 gap-2 pt-4 border-t border-white/15 text-center">
-                    <div className="flex flex-col">
-                      <span className="text-[10px] font-mono text-gray-400">FRONTEND</span>
-                      <span className="text-xs font-bold text-white">Next.js/React</span>
+                {/* White & Black Editorial Frame */}
+                <div className="relative rounded-2xl bg-white border-2 border-dark-900 p-3.5 shadow-2xl overflow-hidden transition-transform duration-300 group-hover:scale-[1.01]">
+                  <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-b from-gray-900 via-dark-900 to-black text-white flex flex-col justify-between p-6">
+                    {/* Background Grid Pattern */}
+                    <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
+
+                    {/* Top Frame Metadata */}
+                    <div className="relative z-10 flex justify-between items-center text-xs font-mono text-accent-red font-bold">
+                      <span>// FULL-STACK DEV</span>
+                      <span>NAVEEN</span>
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-[10px] font-mono text-gray-400">BACKEND</span>
-                      <span className="text-xs font-bold text-white">APIs / Node</span>
+
+                    {/* Editorial Graphic Center */}
+                    <div className="relative z-10 my-auto flex flex-col items-center justify-center text-center gap-4">
+                      <div className="w-20 h-20 rounded-2xl bg-accent-red/20 border-2 border-accent-red flex items-center justify-center text-accent-red shadow-[0_0_30px_rgba(229,9,20,0.4)]">
+                        <Sparkles className="w-10 h-10" />
+                      </div>
+                      <div>
+                        <h4 className="text-2xl sm:text-3xl font-black tracking-tight text-white">NAVEEN</h4>
+                        <p className="text-xs font-mono text-gray-300 tracking-widest mt-1 uppercase font-bold">
+                          FULL-STACK DEVELOPER
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-[10px] font-mono text-gray-400">GROWTH</span>
-                      <span className="text-xs font-bold text-white">SEO & Mktg</span>
+
+                    {/* Bottom Frame Stats */}
+                    <div className="relative z-10 grid grid-cols-3 gap-2 pt-4 border-t border-white/15 text-center">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-mono text-gray-400 font-semibold">FRONTEND</span>
+                        <span className="text-xs font-bold text-white">Next.js / React</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-mono text-gray-400 font-semibold">BACKEND</span>
+                        <span className="text-xs font-bold text-white">APIs / Node</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-mono text-gray-400 font-semibold">GROWTH</span>
+                        <span className="text-xs font-bold text-white">SEO & Mktg</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Floating Technical Badge */}
-              <div className="absolute -bottom-6 -right-6 hidden sm:flex items-center gap-3 px-4 py-3 rounded-xl bg-white border border-gray-200 shadow-xl text-xs font-mono text-dark-900 font-bold">
-                <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
-                <span>AVAILABLE FOR FREELANCE</span>
+                {/* Floating Technical Badge */}
+                <div className="absolute -bottom-5 -right-2 sm:-right-4 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-white border-2 border-dark-900 shadow-xl text-xs font-mono text-dark-900 font-bold z-20">
+                  <span className="w-2.5 h-2.5 rounded-full bg-accent-red animate-pulse" />
+                  <span>AVAILABLE FOR FREELANCE</span>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
           {/* Right Column: Bio & Core Pillars */}
           <motion.div
