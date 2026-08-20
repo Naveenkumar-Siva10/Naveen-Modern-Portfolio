@@ -51,10 +51,10 @@ export default function Hero() {
       id="hero"
       className="relative w-full h-screen min-h-[100svh] flex items-center justify-center overflow-hidden bg-dark-900"
     >
-      {/* 1. Fullscreen Background Video Layer with Right-Shifted Framing to separate Face from H1 */}
+      {/* 1. Fullscreen Background Video Layer with Responsive Mobile/Desktop Crops */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {!videoError ? (
-          <div className="absolute inset-0 w-full h-full transform scale-[1.15] origin-right lg:translate-x-[12%]">
+          <div className="absolute inset-0 w-full h-full transform scale-100 translate-x-0 lg:scale-[1.15] lg:origin-right lg:translate-x-[12%]">
             <video
               ref={videoRef}
               autoPlay
@@ -63,7 +63,7 @@ export default function Hero() {
               muted
               preload="auto"
               onError={() => setVideoError(true)}
-              className="absolute inset-0 w-full h-full object-cover object-[92%_center] sm:object-[88%_center] lg:object-[95%_center] transition-opacity duration-1000"
+              className="absolute inset-0 w-full h-full object-cover object-[55%_18%] sm:object-[75%_25%] lg:object-[95%_center] transition-opacity duration-1000"
             >
               <source src="/videos/hero-reel.mp4" type="video/mp4" />
             </video>
@@ -75,8 +75,8 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#121212] to-[#080808] bg-grid-pattern-dark opacity-90" />
         )}
 
-        {/* 2. Soft Directional Overlay: Dark Shield on Left for H1, Fully Transparent on Right for Face */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent z-[1]" />
+        {/* 2. Soft Directional Overlay: Vertical Gradient on Mobile, Horizontal Shield on Desktop */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black/25 md:bg-gradient-to-r md:from-black/85 md:via-black/45 md:to-transparent z-[1]" />
 
         {/* 3. Subtle Red Ambient Lighting Accent */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-red/15 rounded-full blur-[160px] pointer-events-none z-[1]" />
@@ -196,16 +196,16 @@ export default function Hero() {
               transition={{ type: "spring", damping: 20, stiffness: 200, delay: 0.8 }}
               onClick={toggleMute}
               aria-label={isMuted ? "Unmute showreel audio" : "Mute showreel audio"}
-              className="group relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-black/50 border border-white/30 backdrop-blur-xl flex flex-col items-center justify-center gap-2 text-white hover:border-accent-red transition-all duration-300 hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:scale-105 select-none cursor-pointer"
+              className="group relative w-28 h-28 md:w-40 md:h-40 rounded-full bg-black/50 border border-white/30 backdrop-blur-xl flex flex-col items-center justify-center gap-1.5 md:gap-2 text-white hover:border-accent-red transition-all duration-300 hover:shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:scale-105 select-none cursor-pointer"
             >
               {/* Outer Pulse Ring */}
               <div className="absolute inset-0 rounded-full border border-accent-red/30 group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
 
-              <div className="p-3 rounded-full bg-accent-red/20 text-accent-red group-hover:scale-110 group-hover:bg-accent-red group-hover:text-white transition-all duration-300">
-                {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+              <div className="p-2.5 md:p-3 rounded-full bg-accent-red/20 text-accent-red group-hover:scale-110 group-hover:bg-accent-red group-hover:text-white transition-all duration-300">
+                {isMuted ? <VolumeX className="w-5 h-5 md:w-6 md:h-6" /> : <Volume2 className="w-5 h-5 md:w-6 md:h-6" />}
               </div>
 
-              <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-gray-200 group-hover:text-white">
+              <span className="text-[10px] md:text-[11px] font-mono font-bold tracking-widest uppercase text-gray-200 group-hover:text-white">
                 {isMuted ? "UNMUTE" : "MUTE"}
               </span>
             </motion.button>
@@ -225,7 +225,7 @@ export default function Hero() {
               onClick={scrollToAbout}
               className="group flex items-center gap-2 text-gray-200 hover:text-white transition-colors drop-shadow"
             >
-              <span className="uppercase tracking-widest font-semibold">SCROLL TO EXPLORE ABOUT</span>
+              <span className="uppercase tracking-widest font-semibold text-[11px] md:text-xs">SCROLL TO EXPLORE ABOUT</span>
               <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-1 text-accent-red transition-transform" />
             </a>
           </div>
