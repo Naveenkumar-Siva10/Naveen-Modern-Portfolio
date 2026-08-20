@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Manrope', 'Inter', sans-serif;
+  --accent-red: #E50914;
+  --accent-red-dark: #B00000;
+  --bg-light: #ffffff;
+  --bg-dark: #050608;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+    color: #080808;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #080808;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f7f7f7;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-red);
+  }
+}
+
+/* Custom Cursor default hide on mobile or touch */
+@media (max-width: 1024px), (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* Text stroke utilities */
+.text-stroke-thin {
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
+  color: transparent;
+}
+
+.text-stroke-red {
+  -webkit-text-stroke: 1px #E50914;
+  color: transparent;
+}
+
+.text-stroke-dark {
+  -webkit-text-stroke: 1.5px rgba(8, 8, 8, 0.85);
+  color: transparent;
+}
+
+/* Vivid Red Glow Effects */
+.red-glow {
+  box-shadow: 0 0 40px -5px rgba(229, 9, 20, 0.4);
+}
+
+.red-glow-subtle {
+  box-shadow: 0 0 25px -5px rgba(229, 9, 20, 0.2);
+}
+
+.red-border-glow {
+  border-color: rgba(229, 9, 20, 0.5);
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.25);
+}
+
+/* Custom Light Grid Pattern Background */
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dark Grid Pattern for Footer/CTA */
+.bg-grid-pattern-dark {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
