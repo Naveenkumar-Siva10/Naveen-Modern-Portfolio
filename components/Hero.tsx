@@ -49,9 +49,9 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full h-screen min-h-[100svh] flex items-center justify-center overflow-hidden bg-dark-900"
+      className="relative w-full h-auto min-h-[100svh] lg:h-screen lg:min-h-[100svh] flex items-center justify-center overflow-hidden bg-dark-900"
     >
-      {/* 1. Fullscreen Background Video Layer: Face Shifted to Center-Right Zone */}
+      {/* 1. Fullscreen Background Video Layer: Responsive Portrait Framing */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {!videoError ? (
           <div className="absolute inset-0 w-full h-full transform scale-100 translate-x-0 lg:scale-[1.22] lg:origin-right lg:translate-x-[16%]">
@@ -63,7 +63,7 @@ export default function Hero() {
               muted
               preload="auto"
               onError={() => setVideoError(true)}
-              className="absolute inset-0 w-full h-full object-cover object-[55%_15%] sm:object-[75%_22%] lg:object-[98%_center] transition-opacity duration-1000"
+              className="absolute inset-0 w-full h-full object-cover object-[60%_15%] sm:object-[75%_22%] lg:object-[98%_center] transition-opacity duration-1000"
             >
               <source src="/videos/hero-reel.mp4" type="video/mp4" />
             </video>
@@ -75,22 +75,22 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#121212] to-[#080808] bg-grid-pattern-dark opacity-90" />
         )}
 
-        {/* 2. Soft Directional Overlay: Dark Shield on Left for Text, Fully Transparent on Right for Face */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/50 to-black/30 md:bg-gradient-to-r md:from-black/90 md:via-black/50 md:to-transparent z-[1]" />
+        {/* 2. Soft Directional Overlay: Subtle Vertical Gradient on Mobile, Horizontal Shield on Desktop */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/60 md:bg-gradient-to-r md:from-black/90 md:via-black/50 md:to-transparent z-[1]" />
 
         {/* 3. Subtle Red Ambient Lighting Accent */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-red/15 rounded-full blur-[160px] pointer-events-none z-[1]" />
       </div>
 
       {/* Hero Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full pt-20 pb-16 flex flex-col justify-between h-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 w-full pt-20 pb-16 flex flex-col justify-between h-full min-h-[100svh]">
         {/* Top spacer for navbar */}
         <div className="h-12 md:h-16" />
 
-        {/* Main Content Area: Left Column (Text Zone) & Right Column (Mute Control) */}
+        {/* Main Content Area */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto relative">
-          {/* Left Column: Typography & CTAs (Strictly Constrained to Left 50% on Desktop) */}
-          <div className="lg:col-span-7 flex flex-col gap-6 max-w-[620px]">
+          {/* Left Column: Typography & CTAs */}
+          <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 max-w-[620px]">
             {/* Intro Pill */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Main Editorial Headline */}
-            <div className="flex flex-col max-w-[580px]">
+            <div className="flex flex-col max-w-[340px] sm:max-w-[480px] lg:max-w-[580px]">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
