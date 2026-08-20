@@ -19,7 +19,7 @@ export default function Preloader() {
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.style.overflow = "";
-    }, 2000);
+    }, 1800);
 
     return () => {
       clearTimeout(timer);
@@ -37,7 +37,11 @@ export default function Preloader() {
             y: "-100%",
             transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
           }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#080808] select-none pointer-events-auto"
+          onClick={() => {
+            setIsLoading(false);
+            document.body.style.overflow = "";
+          }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#080808] select-none cursor-pointer"
         >
           {/* Grid Background */}
           <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
