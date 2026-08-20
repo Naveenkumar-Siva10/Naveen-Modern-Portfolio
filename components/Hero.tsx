@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { Volume2, VolumeX, ArrowDown } from "lucide-react";
 import { PERSONAL_INFO } from "@/lib/data";
 
-const TECH_BADGES = ["FULL-STACK", "NEXT.JS", "SEO", "DIGITAL MARKETING"];
+const TECH_BADGES = ["FULL-STACK", "NEXT.JS", "SEO & GROWTH", "DIGITAL MARKETING"];
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -51,21 +51,23 @@ export default function Hero() {
       id="hero"
       className="relative w-full h-screen min-h-[100svh] flex items-center justify-center overflow-hidden bg-dark-900"
     >
-      {/* 1. True Fullscreen Background Video Layer with Repositioned Right Crop */}
+      {/* 1. Fullscreen Background Video Layer with Right-Shifted Framing to separate Face from H1 */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         {!videoError ? (
-          <video
-            ref={videoRef}
-            autoPlay
-            playsInline
-            loop
-            muted
-            preload="auto"
-            onError={() => setVideoError(true)}
-            className="absolute inset-0 w-full h-full object-cover object-[80%_center] sm:object-[75%_center] lg:object-[82%_center] transition-opacity duration-1000"
-          >
-            <source src="/videos/hero-reel.mp4" type="video/mp4" />
-          </video>
+          <div className="absolute inset-0 w-full h-full transform scale-[1.15] origin-right lg:translate-x-[12%]">
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              loop
+              muted
+              preload="auto"
+              onError={() => setVideoError(true)}
+              className="absolute inset-0 w-full h-full object-cover object-[92%_center] sm:object-[88%_center] lg:object-[95%_center] transition-opacity duration-1000"
+            >
+              <source src="/videos/hero-reel.mp4" type="video/mp4" />
+            </video>
+          </div>
         ) : null}
 
         {/* Fallback Dark Background Pattern when video is pending or error */}
@@ -73,8 +75,8 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#121212] to-[#080808] bg-grid-pattern-dark opacity-90" />
         )}
 
-        {/* 2. Soft Directional Overlay: Darker on Left for H1, Clearer on Right for Face */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20 z-[1]" />
+        {/* 2. Soft Directional Overlay: Dark Shield on Left for H1, Fully Transparent on Right for Face */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent z-[1]" />
 
         {/* 3. Subtle Red Ambient Lighting Accent */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-red/15 rounded-full blur-[160px] pointer-events-none z-[1]" />
@@ -186,7 +188,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column: Circular Interactive Mute/Unmute Control ONLY (No Pause) */}
+          {/* Right Column: Circular Interactive Mute/Unmute Control ONLY */}
           <div className="lg:col-span-4 flex justify-start lg:justify-end items-center mt-6 lg:mt-0">
             <motion.button
               initial={{ scale: 0, opacity: 0 }}
@@ -210,7 +212,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Scroll Indicator & Connecting Rope Origin */}
+        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -234,12 +236,6 @@ export default function Hero() {
             <span>2026</span>
           </div>
         </motion.div>
-      </div>
-
-      {/* Visual Rope Connection Origin Point extending to Hero bottom edge */}
-      <div className="absolute bottom-0 left-[18%] md:left-[22%] z-20 hidden sm:flex flex-col items-center pointer-events-none">
-        <div className="w-4 h-4 rounded-full bg-white border-2 border-accent-red shadow-lg" />
-        <div className="w-0.5 h-8 bg-dark-900 shadow-md" />
       </div>
     </section>
   );

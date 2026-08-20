@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import { PERSONAL_INFO } from "@/lib/data";
-import { Layers, Server, Search, Sparkles } from "lucide-react";
+import { Layers, Server, Search } from "lucide-react";
 
 export default function About() {
   return (
@@ -13,12 +13,12 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Hanging Rope-Drop Portrait (Connected to Hero Above) */}
+          {/* Left Column: Hanging Rope-Drop Portrait using Naveen's authentic About image */}
           <div className="lg:col-span-5 relative flex flex-col items-center justify-start pt-0 sm:pt-4">
-            {/* Top Anchor Ring connecting from Hero bottom */}
+            {/* Top Anchor Line */}
             <div className="relative z-20 flex flex-col items-center -mt-20 sm:-mt-32">
               <div className="w-0.5 h-16 sm:h-28 bg-dark-900 shadow-sm" />
-              <div className="w-4 h-4 rounded-full bg-dark-900 border-2 border-accent-red shadow-md" />
+              <div className="w-3.5 h-3.5 rounded-full bg-dark-900 border-2 border-accent-red shadow-md" />
             </div>
 
             {/* Hanging Motion Frame Assembly (DROP -> SWING -> SETTLE) */}
@@ -48,43 +48,38 @@ export default function About() {
                 {/* Decorative Red Accent Glow */}
                 <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-accent-red/40 via-accent-red/10 to-accent-red/40 blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* White & Black Editorial Frame */}
+                {/* White & Black Editorial Frame with Real Portrait Asset */}
                 <div className="relative rounded-2xl bg-white border-2 border-dark-900 p-3.5 shadow-2xl overflow-hidden transition-transform duration-300 group-hover:scale-[1.01]">
-                  <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-b from-gray-900 via-dark-900 to-black text-white flex flex-col justify-between p-6">
-                    {/* Background Grid Pattern */}
-                    <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none" />
+                  <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-dark-900 text-white flex flex-col justify-between">
+                    {/* Authentic About Section Portrait Image */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/about-portrait.png"
+                      alt="Naveen — Full-Stack Developer"
+                      className="absolute inset-0 w-full h-full object-cover object-center"
+                    />
+
+                    {/* Subtle Overlay Gradients for Frame Text */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60 pointer-events-none" />
 
                     {/* Top Frame Metadata */}
-                    <div className="relative z-10 flex justify-between items-center text-xs font-mono text-accent-red font-bold">
+                    <div className="relative z-10 p-5 flex justify-between items-center text-xs font-mono text-accent-red font-bold">
                       <span>// FULL-STACK DEV</span>
                       <span>NAVEEN</span>
                     </div>
 
-                    {/* Editorial Graphic Center */}
-                    <div className="relative z-10 my-auto flex flex-col items-center justify-center text-center gap-4">
-                      <div className="w-20 h-20 rounded-2xl bg-accent-red/20 border-2 border-accent-red flex items-center justify-center text-accent-red shadow-[0_0_30px_rgba(229,9,20,0.4)]">
-                        <Sparkles className="w-10 h-10" />
-                      </div>
-                      <div>
-                        <h4 className="text-2xl sm:text-3xl font-black tracking-tight text-white">NAVEEN</h4>
-                        <p className="text-xs font-mono text-gray-300 tracking-widest mt-1 uppercase font-bold">
-                          FULL-STACK DEVELOPER
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Bottom Frame Stats */}
-                    <div className="relative z-10 grid grid-cols-3 gap-2 pt-4 border-t border-white/15 text-center">
+                    {/* Bottom Frame Details */}
+                    <div className="relative z-10 p-5 pt-0 grid grid-cols-3 gap-2 border-t border-white/20 text-center backdrop-blur-sm bg-black/30">
                       <div className="flex flex-col">
-                        <span className="text-[10px] font-mono text-gray-400 font-semibold">FRONTEND</span>
+                        <span className="text-[10px] font-mono text-gray-300 font-semibold">FRONTEND</span>
                         <span className="text-xs font-bold text-white">Next.js / React</span>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[10px] font-mono text-gray-400 font-semibold">BACKEND</span>
+                        <span className="text-[10px] font-mono text-gray-300 font-semibold">BACKEND</span>
                         <span className="text-xs font-bold text-white">APIs / Node</span>
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-[10px] font-mono text-gray-400 font-semibold">GROWTH</span>
+                        <span className="text-[10px] font-mono text-gray-300 font-semibold">GROWTH</span>
                         <span className="text-xs font-bold text-white">SEO & Mktg</span>
                       </div>
                     </div>
