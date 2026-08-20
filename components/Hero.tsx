@@ -62,7 +62,7 @@ export default function Hero() {
             muted
             preload="auto"
             onError={() => setVideoError(true)}
-            className="absolute inset-0 w-full h-full object-cover object-[48%_25%] sm:object-[50%_25%] lg:object-[82%_center] transition-opacity duration-1000"
+            className="absolute inset-0 w-full h-full object-cover object-[48%_12%] sm:object-[50%_14%] lg:object-[82%_center] transition-opacity duration-1000"
           >
             <source src="/videos/hero-reel.mp4" type="video/mp4" />
           </video>
@@ -102,8 +102,8 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* Main Editorial Headline (Shifted ~26px Down on Mobile to sit below upper face/eyes area) */}
-            <div className="flex flex-col max-w-[320px] sm:max-w-[480px] lg:max-w-[580px] mt-6 sm:mt-7 lg:mt-0">
+            {/* Main Editorial Headline (Shifted ~40px Down on Mobile to sit clearly below Naveen's eyes) */}
+            <div className="flex flex-col max-w-[320px] sm:max-w-[480px] lg:max-w-[580px] mt-10 sm:mt-12 lg:mt-0">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
