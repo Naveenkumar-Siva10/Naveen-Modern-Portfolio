@@ -102,8 +102,8 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            {/* Main Editorial Headline */}
-            <div className="flex flex-col max-w-[320px] sm:max-w-[480px] lg:max-w-[580px]">
+            {/* Main Editorial Headline (Shifted ~26px Down on Mobile to sit below upper face/eyes area) */}
+            <div className="flex flex-col max-w-[320px] sm:max-w-[480px] lg:max-w-[580px] mt-6 sm:mt-7 lg:mt-0">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
