@@ -62,7 +62,7 @@ export default function Hero() {
             muted
             preload="auto"
             onError={() => setVideoError(true)}
-            className="absolute inset-0 w-full h-full object-cover object-[28%_15%] sm:object-[38%_18%] lg:object-[82%_center] transition-opacity duration-1000"
+            className="absolute inset-0 w-full h-full object-cover object-[48%_25%] sm:object-[50%_25%] lg:object-[82%_center] transition-opacity duration-1000"
           >
             <source src="/videos/hero-reel.mp4" type="video/mp4" />
           </video>
@@ -89,15 +89,15 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center my-auto relative">
           {/* Left Column: Typography & CTAs (Strictly Constrained to Left 45% on Desktop) */}
           <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-6 max-w-[320px] sm:max-w-[480px] lg:max-w-[620px]">
-            {/* Intro Pill */}
+            {/* Intro Pill Badge: Full Text, NO Truncation */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-black/50 border border-white/25 backdrop-blur-md w-fit max-w-[calc(100%-60px)] lg:max-w-none shadow-md"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-black/60 border border-white/25 backdrop-blur-md w-fit max-w-[280px] sm:max-w-[420px] lg:max-w-none shadow-md"
             >
               <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse flex-shrink-0" />
-              <span className="text-[10px] sm:text-xs md:text-sm font-bold tracking-widest text-white uppercase truncate drop-shadow">
+              <span className="text-[10px] sm:text-xs md:text-sm font-bold tracking-widest text-white uppercase leading-snug whitespace-normal break-words drop-shadow">
                 HI, I&apos;M {PERSONAL_INFO.name.toUpperCase()} — FULL-STACK DEVELOPER
               </span>
             </motion.div>
@@ -186,7 +186,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column: Circular Interactive Mute/Unmute Control */}
+          {/* Right Column: Circular Interactive Mute/Unmute Control (Positioned Top-Right on Mobile) */}
           <div className="absolute top-16 right-4 sm:top-20 sm:right-6 lg:relative lg:top-0 lg:right-0 z-30 lg:col-span-5 flex justify-end items-center">
             <motion.button
               initial={{ scale: 0, opacity: 0 }}
