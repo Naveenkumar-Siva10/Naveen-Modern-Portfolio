@@ -7,38 +7,38 @@ import { Layers, Server, Search, Sparkles } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about" className="relative py-28 md:py-36 bg-[#f7f7f7] border-t border-surface-border overflow-hidden">
+    <section id="about" className="relative py-20 md:py-32 bg-[#f7f7f7] border-t border-surface-border overflow-hidden">
       {/* Glow background */}
       <div className="absolute right-0 top-1/3 w-[500px] h-[500px] bg-accent-red/5 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Cinematic Hanging Rope-Drop Portrait */}
-          <div className="lg:col-span-5 relative flex flex-col items-center justify-center pt-8 sm:pt-12">
-            {/* Top Ceiling Hook Anchor */}
-            <div className="relative z-20 flex flex-col items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Hanging Rope-Drop Portrait (Connected to Hero Above) */}
+          <div className="lg:col-span-5 relative flex flex-col items-center justify-start pt-0 sm:pt-4">
+            {/* Top Anchor Ring connecting from Hero bottom */}
+            <div className="relative z-20 flex flex-col items-center -mt-20 sm:-mt-32">
+              <div className="w-0.5 h-16 sm:h-28 bg-dark-900 shadow-sm" />
               <div className="w-4 h-4 rounded-full bg-dark-900 border-2 border-accent-red shadow-md" />
-              <div className="w-1.5 h-2 bg-dark-900" />
             </div>
 
-            {/* Rope + Hanging Frame Motion Assembly (Drop -> Swing -> Settle) */}
+            {/* Hanging Motion Frame Assembly (DROP -> SWING -> SETTLE) */}
             <motion.div
-              initial={{ y: -180, rotate: 12, opacity: 0 }}
+              initial={{ y: -160, rotate: 14, opacity: 0 }}
               whileInView={{ y: 0, rotate: -2.5, opacity: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{
                 type: "spring",
                 stiffness: 85,
                 damping: 11,
                 mass: 1.2,
-                delay: 0.1,
+                delay: 0.15,
               }}
               className="relative w-full max-w-sm flex flex-col items-center origin-top select-none"
             >
-              {/* Vertical Rope Extension */}
+              {/* Vertical Rope Extension from Anchor */}
               <div className="w-0.5 h-16 sm:h-24 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900 shadow-sm" />
 
-              {/* Rope Ring Connector */}
+              {/* Rope Ring Connector attached to Top of Frame */}
               <div className="w-5 h-5 rounded-full border-2 border-dark-900 bg-white flex items-center justify-center -mb-2.5 z-30 shadow-md">
                 <div className="w-2 h-2 rounded-full bg-accent-red" />
               </div>
@@ -106,7 +106,7 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-7 flex flex-col gap-6"
+            className="lg:col-span-7 flex flex-col gap-6 pt-4"
           >
             <div className="flex items-center gap-3">
               <span className="w-8 h-[2px] bg-accent-red" />

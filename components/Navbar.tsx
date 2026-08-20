@@ -8,6 +8,7 @@ import { PERSONAL_INFO } from "@/lib/data";
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
+  { label: "Philosophy", href: "#intro" },
   { label: "Services", href: "#services" },
   { label: "Work", href: "#projects" },
   { label: "Process", href: "#process" },

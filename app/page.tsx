@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Intro from "@/components/Intro";
 import About from "@/components/About";
+import Intro from "@/components/Intro";
 import Skills from "@/components/Skills";
 import Services from "@/components/Services";
 import Projects from "@/components/Projects";
@@ -16,8 +16,8 @@ export default function Home() {
     <main className="relative min-h-screen bg-background overflow-hidden">
       <Navbar />
       <Hero />
-      <Intro />
       <About />
+      <Intro />
       <Skills />
       <Services />
       <Projects />

@@ -50,6 +50,12 @@ export default function Hero() {
     if (elem) elem.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToAbout = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const elem = document.getElementById("about");
+    if (elem) elem.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       id="hero"
@@ -213,19 +219,20 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator & Connecting Rope Origin */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
-          className="flex items-center justify-between pt-6 border-t border-white/20 text-xs font-mono text-gray-300"
+          className="flex items-center justify-between pt-6 border-t border-white/20 text-xs font-mono text-gray-300 relative"
         >
           <div className="flex items-center gap-2">
             <a
-              href="#intro"
+              href="#about"
+              onClick={scrollToAbout}
               className="group flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
             >
-              <span className="uppercase tracking-widest font-semibold">SCROLL TO EXPLORE</span>
+              <span className="uppercase tracking-widest font-semibold">SCROLL TO EXPLORE ABOUT</span>
               <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-1 text-accent-red transition-transform" />
             </a>
           </div>
@@ -236,6 +243,12 @@ export default function Hero() {
             <span>2026</span>
           </div>
         </motion.div>
+      </div>
+
+      {/* Visual Rope Connection Origin Point extending to Hero bottom edge */}
+      <div className="absolute bottom-0 left-[18%] md:left-[22%] z-20 hidden sm:flex flex-col items-center pointer-events-none">
+        <div className="w-4 h-4 rounded-full bg-white border-2 border-accent-red shadow-lg" />
+        <div className="w-0.5 h-8 bg-dark-900 shadow-md" />
       </div>
     </section>
   );
