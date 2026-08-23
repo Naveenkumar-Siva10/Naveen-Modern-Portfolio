@@ -6,13 +6,13 @@ import { PERSONAL_INFO } from "@/lib/data";
 import { MessageSquare, Mail, Phone, Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Naveen — Full-Stack Developer & Digital Marketing Specialist",
+  title: "Contact Naveen — Full-Stack Developer & Digital Marketer in Chennai",
   description:
-    "Get in touch with Naveen for custom full-stack web development, Google & Meta Ads, On-Page SEO, and local growth. WhatsApp: +91 86086 04519, Email: naveenwbdigital@gmail.com.",
+    "Get in touch with Naveen, full-stack developer & digital marketer based in New Perungalathur, Chennai. Available for projects across Chennai and remote worldwide. WhatsApp: +91 86086 04519, Email: naveenwbdigital@gmail.com.",
   openGraph: {
-    title: "Contact Naveen — Full-Stack Developer & Digital Marketing Specialist",
+    title: "Contact Naveen — Full-Stack Developer & Digital Marketer in Chennai",
     description:
-      "Start a project with Naveen. Fast response within 24 hours via WhatsApp or Email.",
+      "Start a project with Naveen in New Perungalathur, Chennai. Fast response within 24 hours via WhatsApp or Email.",
   },
 };
 

@@ -25,7 +25,7 @@ export default function Footer() {
               <span>// NAVEEN FREELANCE STUDIO</span>
             </div>
             <p className="text-sm text-gray-300 max-w-md leading-relaxed font-medium">
-              Full-Stack Developer & Digital Marketing Specialist combining modern web engineering, Google & Meta Ads, On-Page SEO, and local growth systems to generate business enquiries.
+              Full-Stack Developer & Digital Marketing Specialist based in New Perungalathur, Chennai. Combining modern web engineering, Google & Meta Ads, On-Page SEO, and local growth systems to generate business enquiries.
             </p>
           </div>
 
@@ -124,8 +124,10 @@ export default function Footer() {
             </a>
           </div>
 
-          <div>
-            © {currentYear} NAVEEN. ALL RIGHTS RESERVED.
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-right">
+            <span>Based in New Perungalathur, Chennai, India</span>
+            <span className="hidden sm:inline">•</span>
+            <span>© {currentYear} NAVEEN. ALL RIGHTS RESERVED.</span>
           </div>
         </div>
       </div>

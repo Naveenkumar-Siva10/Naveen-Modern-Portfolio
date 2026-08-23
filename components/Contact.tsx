@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { PERSONAL_INFO, SERVICES } from "@/lib/data";
-import { ArrowRight, CheckCircle2, AlertCircle, Loader2, Mail, MessageSquare, Phone, Send } from "lucide-react";
+import { ArrowRight, CheckCircle2, AlertCircle, Loader2, Mail, MessageSquare, Phone, Send, MapPin, ExternalLink } from "lucide-react";
 
 interface ContactProps {
   isStandalone?: boolean;
@@ -196,6 +196,51 @@ export default function Contact({ isStandalone = false }: ContactProps) {
                       {PERSONAL_INFO.email}
                     </a>
                   </div>
+                </div>
+
+                {/* Location / Based in Info */}
+                <div className="flex items-start gap-3.5">
+                  <div className="p-2.5 rounded-xl bg-white/15 text-white shrink-0 mt-0.5">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-mono font-bold text-red-200 uppercase">BASED IN</span>
+                    <span className="text-sm font-bold text-white leading-snug">
+                      {PERSONAL_INFO.location}
+                    </span>
+                    <span className="text-xs text-red-100/90 font-medium mt-0.5">
+                      {PERSONAL_INFO.locationAvailability}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Responsive Google Maps Card */}
+              <div className="flex flex-col gap-2.5 pt-4 border-t border-white/20">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-red-200 uppercase tracking-widest">
+                    // LOCATION MAP
+                  </span>
+                  <a
+                    href={PERSONAL_INFO.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-white hover:underline bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded-md transition-colors"
+                  >
+                    <span>View on Google Maps</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+
+                <div className="relative w-full h-40 sm:h-44 rounded-2xl overflow-hidden border border-white/25 shadow-inner bg-black/40">
+                  <iframe
+                    title="Google Maps Location - New Perungalathur, Chennai"
+                    src="https://maps.google.com/maps?q=New+Perungalathur,+Chennai,+Tamil+Nadu,+India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    className="w-full h-full border-0 opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="lazy"
+                    allowFullScreen={false}
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </div>
 

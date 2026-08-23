@@ -61,6 +61,10 @@ export const PERSONAL_INFO = {
   phone: "+91 86086 04519",
   whatsappNumber: "+91 86086 04519",
   whatsappUrl: "https://wa.me/918608604519",
+  location: "New Perungalathur, Chennai, Tamil Nadu, India",
+  locationShort: "New Perungalathur, Chennai, India",
+  locationAvailability: "Available for projects across Chennai and remote projects worldwide.",
+  googleMapsUrl: "https://maps.google.com/?q=New+Perungalathur,+Chennai,+Tamil+Nadu,+India",
   github: "https://github.com",
   linkedin: "https://linkedin.com",
 };
