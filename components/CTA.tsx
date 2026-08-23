@@ -1,16 +1,11 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function CTA() {
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const elem = document.getElementById("contact");
-    if (elem) elem.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="relative py-28 md:py-40 bg-[#050608] border-t border-surface-border overflow-hidden text-white">
       {/* Background ambient lighting */}
@@ -57,14 +52,13 @@ export default function CTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <a
-            href="#contact"
-            onClick={scrollToContact}
+          <Link
+            href="/contact"
             className="group inline-flex items-center gap-4 px-10 py-5 rounded-full bg-accent-red hover:bg-accent-red-dark text-white font-black text-sm md:text-base uppercase tracking-widest transition-all duration-300 shadow-[0_0_40px_rgba(229,9,20,0.5)] hover:shadow-[0_0_60px_rgba(229,9,20,0.8)] hover:scale-105"
           >
             <span>START A PROJECT</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
