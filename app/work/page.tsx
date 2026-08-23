@@ -5,12 +5,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTA from "@/components/CTA";
 import { PROJECTS, PERSONAL_INFO } from "@/lib/data";
-import { ArrowUpRight, CheckCircle2, ShieldCheck, ExternalLink, Sparkles } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ShieldCheck, ExternalLink, Sparkles, LayoutDashboard } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Work & Case Studies — Real Full-Stack & Lead Generation Projects | Naveen",
   description:
-    "Explore real client work and case studies: ChillFix Air Solution (website, Google Business Profile, lead generation), Masala Manufacturer (Google/Meta Ads), and full-stack web applications.",
+    "Explore real client work and project case studies: ChillFix Air Solution (live HVAC service platform), ELORIA (demo beauty platform with admin panel), Masala Manufacturer (Google/Meta Ads), and full-stack web applications.",
   openGraph: {
     title: "Work & Case Studies — Real Full-Stack & Lead Generation Projects | Naveen",
     description:
@@ -30,11 +30,11 @@ export default function WorkPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
           <div className="flex flex-col gap-6 max-w-4xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-mono font-bold tracking-widest uppercase w-fit text-accent-red">
-              <span>// REAL CLIENT WORK & PROJECTS</span>
+              <span>// REAL WORK & CASE STUDIES</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-[1.05]">
-              VERIFIED CLIENT IMPLEMENTATIONS & RESULTS.
+              VERIFIED CLIENT IMPLEMENTATIONS & CASE STUDIES.
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-300 font-medium leading-relaxed max-w-3xl">
@@ -50,6 +50,7 @@ export default function WorkPage() {
           <div className="flex flex-col gap-20 md:gap-32">
             {PROJECTS.map((project, index) => {
               const isEven = index % 2 === 0;
+              const isExternalLink = project.link && project.link.startsWith("http");
 
               return (
                 <div
@@ -84,7 +85,7 @@ export default function WorkPage() {
                         {project.isLiveVerified && (
                           <span className="px-3.5 py-1.5 rounded-full bg-accent-red text-white text-xs font-mono font-bold shadow-md flex items-center gap-1.5">
                             <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                            <span>LIVE VERIFIED</span>
+                            <span>{project.isDemoProject ? "DEMO PROJECT" : "LIVE CLIENT"}</span>
                           </span>
                         )}
                       </div>
@@ -99,7 +100,7 @@ export default function WorkPage() {
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-xs font-mono font-bold text-accent-red tracking-widest uppercase">
-                        0{index + 1} // CASE STUDY
+                        0{index + 1} // {project.isDemoProject ? "DEMO SHOWCASE" : "CASE STUDY"}
                       </span>
                       <span className="text-xs font-mono font-medium text-gray-500">
                         • {project.client}
@@ -117,7 +118,7 @@ export default function WorkPage() {
                     {/* Work Performed Checklist */}
                     <div className="flex flex-col gap-2.5 pt-2">
                       <span className="text-xs font-mono font-bold tracking-widest uppercase text-accent-red">
-                        // WORK PERFORMED
+                        // {project.isDemoProject ? "CORE CAPABILITIES DEMONSTRATED" : "WORK PERFORMED"}
                       </span>
                       <div className="flex flex-col gap-2">
                         {project.workPerformed.map((item, wIdx) => (
@@ -143,7 +144,7 @@ export default function WorkPage() {
 
                     {/* CTA Links */}
                     <div className="pt-3 flex flex-wrap items-center gap-4">
-                      {project.link && project.link.startsWith("http") ? (
+                      {isExternalLink ? (
                         <a
                           href={project.link}
                           target="_blank"
@@ -192,7 +193,7 @@ export default function WorkPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* ChillFix Evidence Block */}
               <div className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between gap-6">
                 <div className="flex flex-col gap-4">
@@ -222,11 +223,40 @@ export default function WorkPage() {
                 </div>
               </div>
 
+              {/* ELORIA Demo Block */}
+              <div className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between gap-6">
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono font-bold text-accent-red uppercase">02 / BEAUTY & WELLNESS</span>
+                    <span className="px-3 py-1 rounded-full bg-surface border border-gray-200 text-[10px] font-mono font-bold text-dark-900">
+                      DEMO PROJECT
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-black text-dark-900">ELORIA Beauty Platform</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed font-medium">
+                    Full-stack demo website showcasing high-end responsive UI design, interactive portfolio gallery, WhatsApp conversion routing, and a custom backend Admin Panel for seamless business data and content management.
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+                  <span className="text-xs font-mono text-gray-500 font-bold">VERIFIED URL</span>
+                  <a
+                    href="https://eloria-beauty-beta.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-mono font-bold text-accent-red hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>eloria-beauty-beta...</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+
               {/* Masala Manufacturer Evidence Block */}
               <div className="p-8 rounded-3xl bg-white border border-gray-200 shadow-sm flex flex-col justify-between gap-6">
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-accent-red uppercase">02 / FOOD & SPICE INDUSTRY</span>
+                    <span className="text-xs font-mono font-bold text-accent-red uppercase">03 / FOOD & SPICE INDUSTRY</span>
                     <span className="px-3 py-1 rounded-full bg-surface border border-gray-200 text-[10px] font-mono font-bold text-dark-900">
                       PAID ADS CAMPAIGNS
                     </span>

@@ -13,6 +13,7 @@ export interface Project {
   github?: string;
   featured: boolean;
   isLiveVerified?: boolean;
+  isDemoProject?: boolean;
 }
 
 export interface Service {
@@ -108,6 +109,34 @@ export const PROJECTS: Project[] = [
     link: "https://chillfixairsolution.in",
     featured: true,
     isLiveVerified: true,
+    isDemoProject: false,
+  },
+  {
+    id: "eloria",
+    title: "ELORIA",
+    client: "Personal / Demo Project — Built by Naveen",
+    category: "Full-Stack Web & Beauty Platform",
+    shortDescription: "Professional beauty service website experience featuring responsive design, service showcase, interactive gallery, booking flows, WhatsApp integration, and custom Admin Panel content management.",
+    description: "A complete full-stack beauty service platform built by Naveen as a personal demo project (not client work). Demonstrates modern responsive web development, professional UI/UX, intuitive booking/contact pathways, direct WhatsApp inquiry routing, and a custom backend Admin Panel for seamless content and service data management.",
+    workPerformed: [
+      "Responsive website development & modern UI/UX",
+      "Service presentation & portfolio gallery showcase",
+      "Booking / contact flow & WhatsApp integration",
+      "Custom Admin Panel / content management capability",
+      "Full website implementation"
+    ],
+    servicesInvolved: [
+      "Full-Stack Web Development",
+      "UI/UX Engineering",
+      "Admin Panel & Data Management",
+      "Conversion & WhatsApp Integration"
+    ],
+    tags: ["Next.js", "React", "Tailwind CSS", "Admin Panel", "WhatsApp Integration"],
+    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop",
+    link: "https://eloria-beauty-beta.vercel.app/",
+    featured: true,
+    isLiveVerified: true,
+    isDemoProject: true,
   },
   {
     id: "masala-manufacturer",
@@ -133,6 +162,7 @@ export const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=1200&auto=format&fit=crop",
     featured: true,
     isLiveVerified: false,
+    isDemoProject: false,
   },
   {
     id: "personal-portfolio",
@@ -157,6 +187,7 @@ export const PROJECTS: Project[] = [
     link: "/",
     featured: true,
     isLiveVerified: true,
+    isDemoProject: false,
   },
 ];
 
