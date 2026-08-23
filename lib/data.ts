@@ -66,7 +66,7 @@ export const PERSONAL_INFO = {
   locationAvailability: "Available for projects across Chennai and remote projects worldwide.",
   googleMapsUrl: "https://maps.google.com/?q=New+Perungalathur,+Chennai,+Tamil+Nadu,+India",
   github: "https://github.com",
-  linkedin: "https://linkedin.com",
+  linkedin: "https://www.linkedin.com/in/naveen-digital-1a601242b/",
 };
 
 export const CORPORATE_EXPERIENCE: Experience[] = [
