@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import Preloader from "@/components/Preloader";
-import CustomCursor from "@/components/CustomCursor";
 import StickyContactActions from "@/components/StickyContactActions";
 
 const inter = Inter({
@@ -38,7 +37,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${manrope.variable} scroll-smooth`}>
       <body className="bg-white text-dark-800 antialiased selection:bg-accent-red selection:text-white">
         <Preloader />
-        <CustomCursor />
         <StickyContactActions />
         {children}
       </body>

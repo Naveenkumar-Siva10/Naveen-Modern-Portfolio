@@ -52,13 +52,6 @@
   }
 }
 
-/* Custom Cursor default hide on mobile or touch */
-@media (max-width: 1024px), (pointer: coarse) {
-  .custom-cursor {
-    display: none !important;
-  }
-}
-
 /* Text stroke utilities */
 .text-stroke-thin {
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
